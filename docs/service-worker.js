@@ -448,7 +448,7 @@ self.__precacheManifest = [
     "revision": "f3e1e87a319e91c8320c7ebb2ac0b7f2"
   },
   {
-    "url": "icons/android-chrome-192x192.png",
+    "url": "icons/android-chrome-512x512.png",
     "revision": "f130a0b70e386170cf6f011c0ca8c4f4"
   },
   {

@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }],
+    ['link', { rel: 'icon', href: `/logo2.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -44,6 +44,18 @@ module.exports = {
             link: '/zh/standard/Start.md'
           },
           {
+            text: '笔记',
+            items: [
+              { text: 'Vue', link: '/zh/vue/' },
+              { text: 'React', link: '/zh/react/' },
+              { text: '小程序', link: '/zh/miniapp/' },
+              { text: '在线思维导图', link: '/zh/interface/Mind.md' },
+              { text: '悦读管理后台', link: '/zh/interface/Yuedu.md' },
+              { text: 'BlackMarket', link: '/zh/interface/BlackMarket.md' },
+              { text: 'TouTiao', link: '/zh/interface/TouTiao.md' }
+            ]
+          },
+          {
             text: '项目相关',
             items: [
               { text: '前端规范', link: '/zh/standard/Standard.md' },
@@ -54,23 +66,11 @@ module.exports = {
             ],
           },
           {
-            text: '知名公司面试题',
+            text: 'preview',
             items: [
-              { text: '面试必看', link: '/zh/interview/index.md' },
-              { text: '阿里巴巴', link: '/zh/interview/ali.md' },
-              { text: '龙湖地产', link: '/zh/interview/longhu.md' }
-            ]
-          },
-          {
-            text: '知识点笔记',
-            items: [
-              { text: '在线思维导图', link: '/zh/interface/Mind.md' },
-              { text: 'Vue', link: '/zh/vue/' },
-              { text: 'React', link: '/zh/react/' },
-              { text: '小程序', link: '/zh/miniapp/' },
-              { text: '悦读管理后台', link: '/zh/interface/Yuedu.md' },
-              { text: 'BlackMarket', link: '/zh/interface/BlackMarket.md' },
-              { text: 'TouTiao', link: '/zh/interface/TouTiao.md' }
+              { text: '面试必看', link: '/zh/preview/index.md' },
+              { text: '阿里巴巴', link: '/zh/preview/ali.md' },
+              { text: '龙湖地产', link: '/zh/preview/longhu.md' }
             ]
           },
           // {
