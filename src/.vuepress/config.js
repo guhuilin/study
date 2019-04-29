@@ -40,38 +40,44 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: [
           {
-            text: '搭建开发环境',
-            link: '/zh/standard/Start.md'
-          },
-          {
-            text: '笔记',
+            text: 'Notes',
+            link: '/zh/chain/',
             items: [
-              { text: 'Vue', link: '/zh/vue/' },
-              { text: 'React', link: '/zh/react/' },
-              { text: '小程序', link: '/zh/miniapp/' },
-              { text: '在线思维导图', link: '/zh/interface/Mind.md' },
-              { text: '悦读管理后台', link: '/zh/interface/Yuedu.md' },
-              { text: 'BlackMarket', link: '/zh/interface/BlackMarket.md' },
-              { text: 'TouTiao', link: '/zh/interface/TouTiao.md' }
+            //   { text: '链接', link: '/zh/chain/' },
+              // { text: 'React', link: '/zh/react/' },
+              // { text: '小程序', link: '/zh/miniapp/' },
+              // { text: '在线思维导图', link: '/zh/interface/Mind.md' },
+              // { text: '悦读管理后台', link: '/zh/interface/Yuedu.md' },
+              // { text: 'BlackMarket', link: '/zh/interface/BlackMarket.md' },
+              // { text: 'TouTiao', link: '/zh/interface/TouTiao.md' }
             ]
           },
           {
-            text: '项目相关',
+            text: 'ProjectRelated',
             items: [
-              { text: '前端规范', link: '/zh/standard/Standard.md' },
-              { text: '项目流程', link: '/zh/standard/Project.md' },
-              { text: '前后端交互', link: '/zh/standard/Cooperation.md' },
-              { text: '移动端兼容问题', link: '/zh/standard/Compatibility.md' },
-              { text: '项目优化', link: '/zh/standard/Improve.md' }
+              { text: 'normalize', link: '/zh/standard/Standard.md' },
+              { text: 'step', link: '/zh/standard/Project.md' },
+              { text: 'interact', link: '/zh/standard/Cooperation.md' },
+              { text: 'compatibility', link: '/zh/standard/Compatibility.md' },
+              { text: 'optimize', link: '/zh/standard/Improve.md' }
             ],
           },
           {
-            text: 'preview',
-            items: [
-              { text: '面试必看', link: '/zh/preview/index.md' },
-              { text: '阿里巴巴', link: '/zh/preview/ali.md' },
-              { text: '龙湖地产', link: '/zh/preview/longhu.md' }
-            ]
+            text: 'Article',
+            link: '/zh/article/'
+          },
+          {
+            text: 'Interview',
+            link: '/zh/interview/',
+            // items: [
+            //   { text: '面试必看', link: '/zh/preview/index.md' },
+            //   { text: '阿里巴巴', link: '/zh/preview/ali.md' },
+            //   { text: '龙湖地产', link: '/zh/preview/longhu.md' }
+            // ]
+          },
+          {
+            text: 'SiteServer',
+            link: '/zh/standard/Start.md'
           },
           // {
           //   text: '语言',
@@ -91,22 +97,28 @@ module.exports = {
         ],
         sidebar: {
           '/guide/': genSidebarConfig('指南'),
-          '/zh/ali/': [{ title: '阿里面试题' }],
+          // '/zh/ali/': [{ title: '阿里面试题' }],
           '/zh/vue/': [{
             title: 'Vue知识点', children: [
               '', 'Es6', 'Es6方法扩展', 'Webpack', 'Babel', 'Promise', 'Vue 各种方法之间的区别', 'Vue组件', 'Vue路由', 'Vue动画', 'vue钩子函数', 'vuex'
             ]
           }],
-          '/zh/react/': [{
-            title: 'React知识点', children: [
-              '', 'JSX', 'MVVM', 'Props', 'React生命周期', 'React组件', 'React路由', 'redux', 'redux中间件', '组件通信', '高阶组件'
+          '/zh/chain/': [{
+            title: '常用知识点', 
+            children: [
+              '', 'Vue',
             ]
           }],
-          '/zh/miniapp/': [{
-            title: '小程序知识点', children: [
-              '', 'WXS', 'wepy组件通信', '小程序事件', '小程序路由', '小程序组件', '小程序组件化'
-            ]
-          }]
+          // '/zh/chain/': [{
+          //   title: '常用知识点', children: [
+          //     '', 'JSX', 'MVVM', 'Props', 'React生命周期', 'React组件', 'React路由', 'redux', 'redux中间件', '组件通信', '高阶组件'
+          //   ]
+          // }],
+          // '/zh/miniapp/': [{
+          //   title: '小程序知识点', children: [
+          //     '', 'WXS', 'wepy组件通信', '小程序事件', '小程序路由', '小程序组件', '小程序组件化'
+          //   ]
+          // }]
         }
       }
     },
