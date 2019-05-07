@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /avatar.png
+heroImage: /logo.jpg
 actionText: Welcome →
 actionLink: /zh/chain/
 sidebarDepth: 2

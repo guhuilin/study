@@ -88,6 +88,33 @@ shouldComponentUpdate: function(nextProps, nextState) {
 ## 知识拓展
 
 ### React Native
+#### 安装
+##### 1. 安装镜像源, Yarn、React Native 的命令行工具（react-native-cli）
+```js
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+
+npm install -g yarn react-native-cli
+
+yarn config set registry https://registry.npm.taobao.org --global
+yarn config set disturl https://npm.taobao.org/dist --global
+```
+##### 2. 安装 Android Studio
+```html
+ 一直 next ~
+ 安装路径: C:\Program Files\Android
+ 下载路径: C:\Users\guhuilin1\AppData\Local\Android\Sdk
+
+安装 SDK Menger
+  Appearance & Behavior → System Settings → Android SDK
+```
+##### 3. 配置 ANDROID_HOME 环境变量
+##### 4. 把 platform-tools 目录添加到环境变量 Path 中
+##### 5. 创建项目
+
+
+[参考 React Native 搭建开发环境链接](https://reactnative.cn/docs/getting-started.html)
+
 
 #### 优势
 
@@ -130,10 +157,65 @@ shouldComponentUpdate: function(nextProps, nextState) {
 - SavedInstanceState 在 Android 上跨进程的坑。
 
 #### 不是技术问题的问题
-
 - 要用好 RN 你必须同时熟悉 iOS 和 Android ，当然还有 RN 本身，这就对我们工程师提出了更多挑战。
 - 团队的管理，责任的划分。
 - RN 文档及相关资源不如 iOS 和 Android 的丰富。
+
+## React中的 DOM diff
+::: tip 前言
+React diff 作为 Virtual DOM 的加速器，其算法上的改进优化是 React 整个界面渲染的基础，以及性能提高的保障
+:::
+
+React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心 Virtual DOM 背后的运作原理，因为 React diff 会帮助我们计算出 Virtual DOM 中真正变化的部分，并只针对该部分进行实际 DOM 操作，而非重新渲染整个页面，从而保证了每次操作更新后页面的高效渲染，因此 Virtual DOM 与 diff 是保证 React 性能口碑的幕后推手。
+
+### 传统 diff 算法
+计算一棵树形结构转换成另一棵树形结构的最少操作，是一个复杂且值得研究的问题。传统 diff 算法通过循环递归对节点进行依次对比，效率低下，算法复杂度达到 O(n^3)，其中 n 是树中节点的总数。O(n^3) 到底有多可怕，这意味着如果要展示1000个节点，就要依次执行上十亿次的比较。这种指数型的性能消耗对于前端渲染场景来说代价太高了！现今的 CPU 每秒钟能执行大约30亿条指令，即便是最高效的实现，也不可能在一秒内计算出差异情况。
+
+如果 React 只是单纯的引入 diff 算法而没有任何的优化改进，那么其效率是远远无法满足前端渲染所要求的性能。
+
+因此，想要将 diff 思想引入 Virtual DOM，就需要设计一种稳定高效的 diff 算法，而 React 做到了！
+
+那么，React diff 到底是如何实现的呢？
+
+### React diff 策略
+<b>React 通过制定大胆的策略，将 O(n^3) 复杂度的问题转换成 O(n) 复杂度的问题。</b><br>
+
+>（1）什么是调和？
+>> 将Virtual DOM树转换成actual DOM树的最少操作的过程 称为 调和 。
+
+> tip（2）什么是React diff算法？
+>> diff算法是调和的具体实现。
+
+### 策略一（tree diff）：
+**Web UI中DOM节点跨层级的移动操作特别少，可以忽略不计。** <br>
+（1）React通过updateDepth对Virtual DOM树进行层级控制。<br>
+（2）对树分层比较，两棵树 只对同一层次节点 进行比较。如果该节点不存在时，则该节点及其子节点会被完全删除，不会再进一步比较。<br>
+（3）只需遍历一次，就能完成整棵DOM树的比较。<br>
+
+###### 那么问题来了，如果DOM节点出现了跨层级操作,diff会咋办呢？
+答：diff只简单考虑同层级的节点位置变换，如果是跨层级的话，只有创建节点和删除节点的操作。
+![Image](https://upload-images.jianshu.io/upload_images/5518628-41118df156ed8d6e.png)
+如上图所示，以A为根节点的整棵树会被重新创建，而不是移动，因此 官方建议不要进行DOM节点跨层级操作，可以通过CSS隐藏、显示节点，而不是真正地移除、添加DOM节点。
+
+### 策略二（component diff）：
+拥有相同类的两个组件 生成相似的树形结构，
+拥有不同类的两个组件 生成不同的树形结构。
+###### React对不同的组件间的比较，有三种策略
+- （1）同一类型的两个组件，按原策略（层级比较）继续比较Virtual DOM树即可。
+- （2）同一类型的两个组件，组件A变化为组件B时，可能Virtual DOM没有任何变化，如果知道这点（变换的过程中，Virtual DOM没有改变），可节省大量计算时间，所以 用户 可以通过 shouldComponentUpdate() 来判断是否需要 判断计算。
+- （3）不同类型的组件，将一个（将被改变的）组件判断为dirty component（脏组件），从而替换 整个组件的所有节点。
+> 注意：如果组件D和组件G的结构相似，但是 React判断是 不同类型的组件，则不会比较其结构，而是删除 组件D及其子节点，创建组件G及其子节点。
+
+### 策略三（element diff）：
+对于同一层级的一组子节点，通过唯一id区分。
+当节点处于同一层级时，diff提供三种节点操作：删除、插入、移动。 <br>
+<b>插入</b>：组件 C 不在集合（A,B）中，需要插入  <br>
+<b>删除</b>：（1）组件 D 在集合（A,B,D）中，但 D的节点已经更改，不能复用和更新，所以需要删除 旧的 D ，再创建新的。  
+（2）组件 D 之前在 集合（A,B,D）中，但集合变成新的集合（A,B）了，D 就需要被删除。<br>
+<b>移动</b>：组件D已经在集合（A,B,C,D）里了，且集合更新时，D没有发生更新，只是位置改变，如新集合（A,D,B,C），D在第二个，无须像传统diff，让旧集合的第二个B和新集合的第二个D 比较，并且删除第二个位置的B，再在第二个位置插入D，而是 （对同一层级的同组子节点） 添加唯一key进行区分，移动即可。
+
+
+[学习链接](https://github.com/hujiulong/simple-react/blob/master/src/react-dom/diff.js)
 
 ## 学习链接
 

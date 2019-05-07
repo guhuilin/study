@@ -106,7 +106,7 @@ module.exports = {
           '/zh/chain/': [{
             title: '常用知识点', 
             children: [
-              '', 'Vue','page',
+              '', 'Vue','page','methods'
             ]
           }],
           // '/zh/chain/': [{

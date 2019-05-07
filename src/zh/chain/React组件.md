@@ -1,3 +1,8 @@
+---
+sidebar: auto
+sidebarDepth: 2
+---
 # React组件
-##### 无状态组件(视图组件)
-##### class 继承 （容器组件）
+
+## 无状态组件(视图组件)
+## class 继承 （容器组件）
