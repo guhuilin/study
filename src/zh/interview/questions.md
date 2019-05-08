@@ -1,6 +1,6 @@
 # 常规面试题
 
-- 用 setTimeout 实现 setInterval
+### 用 setTimeout 实现 setInterval
 
 render props 和 HOC 的区别 purecomponent
 柯里化 高阶函数 尾调用
@@ -28,7 +28,7 @@ iOS 下 input 无法自动聚焦的问题
 手写代码实现一下 Array.prototype.trim 这个函数，并写个测试用例跑给我看下
 面向切面编程和函数式编程听说过吗
 
-图灵完备理论知道吗？关于图灵的其他知识知道吗？
+### 图灵完备理论知道吗？关于图灵的其他知识知道吗？
 
 > 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟单带图灵机，那么它是图灵完备的。图灵机由以下几个部分组成：
 > 一条无限长的纸带 TAPE。
@@ -36,7 +36,7 @@ iOS 下 input 无法自动聚焦的问题
 > 一套控制规则 TABLE。
 > 一个状态寄存器。
 
-图片懒加载的两种实现形式
+### 图片懒加载的两种实现形式
 
 - 如何实现图片懒加载；
 - 如何提高图片懒加载的效率；
@@ -57,6 +57,33 @@ iOS 下 input 无法自动聚焦的问题
 - 使用 requestAnimationFrame 实现类似 setInterval 的计时器
 - 实现一个类似百度的搜索框，就是一边输入内容，一边在一个下拉列表显示搜索结果，需要考虑哪些问题？
 - file-loader 和 url-loader 区别
+
+事件委托应该是前端最经常问的一个问题。
+但其实里面有非常非常多的知识点可以考察。
+
+- css last-of-type last-child
+- 事件委托的好处
+- addEventListener 第三个参数
+- 实现 index
+- 类数组 => 数组
+- querySelectorAll 方法相比 getElementsBy 系列方法有什么区别
+- HTMLCollection NodeList 区别
+
+https://www.zhihu.com/question/24702250
+
+```js
+const ul = window.document.getElementsByTagName('ul')[0]
+ul.addEventListener('click', e => {
+  const children = [...ul.getElementsByTagName('li')] //htmlCollection => array
+  if (e.target && e.target.nodeName.toLowerCase() === 'li') {
+    const index = children.indexOf(e.target)
+    console.log(index)
+  }
+})
+```
+
+一道有意思的面试题
+[100\*100 的 canvas 占多少内存？](https://juejin.im/post/5bdeb357e51d4536140fc7df)
 
 淘宝 P6 前端要求，比较泛的能力描述，供参考：
 

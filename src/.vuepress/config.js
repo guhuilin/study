@@ -53,6 +53,10 @@ module.exports = {
             ]
           },
           {
+            text: 'Practice',
+            link: '/zh/practice/'
+          },
+          {
             text: 'ProjectRelated',
             items: [
               { text: 'normalize', link: '/zh/standard/Standard.md' },
@@ -99,14 +103,21 @@ module.exports = {
           '/guide/': genSidebarConfig('指南'),
           // '/zh/ali/': [{ title: '阿里面试题' }],
           '/zh/vue/': [{
-            title: 'Vue知识点', children: [
+            title: 'Vue知识点', 
+            children: [
               '', 'Es6', 'Es6方法扩展', 'Webpack', 'Babel', 'Promise', 'Vue 各种方法之间的区别', 'Vue组件', 'Vue路由', 'Vue动画', 'vue钩子函数', 'vuex'
             ]
           }],
           '/zh/chain/': [{
             title: '常用知识点', 
             children: [
-              '', 'Vue','page','methods'
+              '', 'point', 'react', 'Vue', 'RN', 'page', 'methods'
+            ]
+          }],
+          '/zh/interview/': [{
+            title: '面试题', 
+            children: [
+              '', 'js' , 'collect', 'questions', 'vue', 'network',
             ]
           }],
           // '/zh/chain/': [{
