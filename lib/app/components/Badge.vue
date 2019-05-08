@@ -25,9 +25,9 @@ export default {
 
 .badge
   display inline-block
-  font-size 14px
-  height 18px
-  line-height 18px
+  font-size 12px
+  height 15px
+  line-height 15px
   border-radius 3px
   padding 0 6px
   color white

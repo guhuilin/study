@@ -8,7 +8,7 @@ sidebar: auto
 footer: MIT Licensed | Copyright © 2018  guhuilin
 ---
 
-<div style="text-align: center;">
+<div style="text-align: center; fontSize: 12px;">
   <Bit/>
 </div>
 
