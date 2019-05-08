@@ -81,12 +81,62 @@ B在旧 中的index=1，它的lastIndex=0，**不满足 index < lastIndex 的条
 
 [学习链接](https://github.com/hujiulong/simple-react/blob/master/src/react-dom/diff.js)
 
+## Redux中间件
+### 1、applyMiddleware
+- 方便调试，实时触发，线下使用
+
+```
+import {createStore，applyMiddleware} from 'redux';
+import reducers from './reducers';
+import Logger from 'redux-logger';
+
+export default createStore(reducers, applyMiddleware(Logger))
+```
+### 2、redux-thunk
+- 目的：异步解决方案
+- 支持action的写法有对象变为函数
+- 可以发送多个dispatch
+- 改变action
+- 同时会帮我们注入两个参数dispatch和getState
+- 在异步操作完成之后再触发dispatch操作
+```
+dispatch((dispatch, getState)=>{
+    // getState可以获取全局的state
+    dispatch({
+        type:"START"
+    })
+    fetch('/data.json')
+    .then(res=>res.json())
+    .then(success=>{
+        if(success){
+            dispatch({
+                type:"FETCH_LIST",
+                payLoad:success.arr
+            })
+        }else{
+            dispatch({
+                type:"FETCH_TAIL"
+            })
+        }
+    })
+})
+```
+### 3、redux-saga
+- 拦截请求
+- 解决异步
+- 不会改变action
+- take 拦截
+- takeEvery 每次都拦截
+### 4、redux-thunk
+- 改写action
+
+
 ## MVVM 与 MVC
-#### 1、MVVM是什么？
+### 1、MVVM是什么？
 1. MVVM是Model-View-ViewModel的简写
 2. 它本质上是MVC 的改进版
 3. MVVM（Model-View-ViewModel）框架的由来是MVP（Model-View-Presenter）模式与WPF结合的应用方式时发展演变过来的一种新型架构框架
-#### 2、MVVM优点
+### 2、MVVM优点
 
 - > MVVM模式和MVC模式一样，主要目的是分离视图（View）和模型（Model），有几大优点
 

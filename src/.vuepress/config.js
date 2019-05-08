@@ -73,11 +73,6 @@ module.exports = {
           {
             text: 'Interview',
             link: '/zh/interview/',
-            // items: [
-            //   { text: '面试必看', link: '/zh/preview/index.md' },
-            //   { text: '阿里巴巴', link: '/zh/preview/ali.md' },
-            //   { text: '龙湖地产', link: '/zh/preview/longhu.md' }
-            // ]
           },
           {
             text: 'SiteServer',
@@ -111,7 +106,13 @@ module.exports = {
           '/zh/chain/': [{
             title: '常用知识点', 
             children: [
-              '', 'point', 'react', 'Vue', 'RN', 'page', 'methods'
+              '', 'point', 'react', 'Vue', 'RN', 'page', 
+            ]
+          }],
+          '/zh/practice/': [{
+            title: '练习', 
+            children: [
+              '', 'methods',
             ]
           }],
           '/zh/interview/': [{
@@ -120,6 +121,7 @@ module.exports = {
               '', 'js' , 'collect', 'questions', 'vue', 'network',
             ]
           }],
+
           // '/zh/chain/': [{
           //   title: '常用知识点', children: [
           //     '', 'JSX', 'MVVM', 'Props', 'React生命周期', 'React组件', 'React路由', 'redux', 'redux中间件', '组件通信', '高阶组件'
