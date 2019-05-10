@@ -106,13 +106,13 @@ module.exports = {
           '/zh/chain/': [{
             title: '常用知识点', 
             children: [
-              '', 'point', 'react', 'Vue', 'RN', 'page', 
+              '', 'point', 'es6', 'react', 'dva', 'Vue', 'RN', 'page', 'jsbridge'
             ]
           }],
           '/zh/practice/': [{
             title: '练习', 
             children: [
-              '', 'methods',
+              '', 'methods', 'questions'
             ]
           }],
           '/zh/interview/': [{
